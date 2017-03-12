@@ -1,0 +1,30 @@
+{
+  "name": "sodium-uuid",
+  "version": "0.0.0",
+  "description": "Generate v4 UUIDs using libsodium's RNG",
+  "main": "index.js",
+  "dependencies": {
+    "sodium-native": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilbayes/sodium-uuid.git"
+  },
+  "keywords": [
+    "rng",
+    "uuid",
+    "uuidv4",
+    "uuid4",
+    "v4",
+    "libsodium",
+    "sodium"
+  ],
+  "author": "Emil Bay <github@tixz.dk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilbayes/sodium-uuid/issues"
+  },
+  "homepage": "https://github.com/emilbayes/sodium-uuid#readme"
+}
