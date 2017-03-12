@@ -13,14 +13,17 @@ module.exports = function (buf) {
   sodium.randombytes_buf(buf)
 
   // Mask then set bits
+  // https://tools.ietf.org/html/rfc4122#section-4.1.2
 
   // clock_seq_hi_and_reserved
-  buf[6] &= 249 // 0b11111001
-  buf[6] |= 2 //   0b00000010
+  // version
+  buf[6] &= 0x0f // 0b00001111
+  buf[6] |= 0x40 // 0b01000000
 
   // time_hi_and_version
-  buf[7] &= 240 // 0b11110000
-  buf[7] |= 4 //   0b00000100
+  // IETF variant
+  buf[8] &= 0x3f // 0b00111111
+  buf[8] |= 0x80 // 0b10000000
 
   return buf
 }
