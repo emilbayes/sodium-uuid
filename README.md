@@ -1,4 +1,5 @@
 # `sodium-uuid`
+[![Build Status](https://travis-ci.org/emilbayes/sodium-uuid.svg?branch=master)](https://travis-ci.org/emilbayes/sodium-uuid)
 
 > Generate v4 UUIDs using libsodium's RNG
 
