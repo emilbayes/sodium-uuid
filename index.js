@@ -15,12 +15,12 @@ module.exports = function (buf) {
   // Mask then set bits
 
   // clock_seq_hi_and_reserved
-  buf[0] &= 249 // 0b11111001
-  buf[0] |= 2 //   0b00000010
+  buf[6] &= 249 // 0b11111001
+  buf[6] |= 2 //   0b00000010
 
   // time_hi_and_version
-  buf[1] &= 240 // 0b11110000
-  buf[1] |= 4 //   0b00000100
+  buf[7] &= 240 // 0b11110000
+  buf[7] |= 4 //   0b00000100
 
   return buf
 }
