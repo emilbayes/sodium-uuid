@@ -10,7 +10,7 @@ module.exports = function (buf) {
     buf = Buffer.allocUnsafe(16)
   }
 
-  sodium.randombytes_buf(buf)
+  sodium.randombytes_buf(buf.slice(0, 16))
 
   // Mask then set bits
   // https://tools.ietf.org/html/rfc4122#section-4.1.2
