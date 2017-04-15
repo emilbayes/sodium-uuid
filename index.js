@@ -2,16 +2,18 @@
 var sodium = require('sodium-universal')
 var assert = require('assert')
 
+var BYTES = 16
+
 module.exports = create
 function create (buf) {
   assert(buf == null ? true : Buffer.isBuffer(buf), 'buf must be Buffer')
-  assert(buf == null ? true : buf.length >= 16, 'buf must be at least 16 bytes')
+  assert(buf == null ? true : buf.length >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
 
   if (buf == null) {
-    buf = Buffer.allocUnsafe(16)
+    buf = Buffer.allocUnsafe(BYTES)
   }
 
-  sodium.randombytes_buf(buf.slice(0, 16))
+  sodium.randombytes_buf(buf.slice(0, BYTES))
 
   // Mask then set bits
   // https://tools.ietf.org/html/rfc4122#section-4.1.2
@@ -31,7 +33,7 @@ function create (buf) {
 
 create.stringify = function (buf) {
   assert(Buffer.isBuffer(buf), 'buf must be Buffer')
-  assert(buf.length >= 16, 'buf must be at least 16 bytes')
+  assert(buf.length >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
 
   return [
     buf.slice(0, 4),
@@ -43,3 +45,5 @@ create.stringify = function (buf) {
     return subbuf.toString('hex')
   }).join('-')
 }
+
+create.BYTES = BYTES
