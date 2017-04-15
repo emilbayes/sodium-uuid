@@ -28,3 +28,18 @@ function create (buf) {
 
   return buf
 }
+
+create.stringify = function (buf) {
+  assert(Buffer.isBuffer(buf), 'buf must be Buffer')
+  assert(buf.length >= 16, 'buf must be at least 16 bytes')
+
+  return [
+    buf.slice(0, 4),
+    buf.slice(4, 6),
+    buf.slice(6, 8),
+    buf.slice(8, 10),
+    buf.slice(10, 16)
+  ].map(function (subbuf) {
+    return subbuf.toString('hex')
+  }).join('-')
+}
