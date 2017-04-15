@@ -9,7 +9,7 @@
 var uuid = require('sodium-uuid')
 
 uuid() // => Buffer
-uuid(Buffer.allocUnsafe(uuid.BYTES)) // => alloc'ed 16 byte Buffer
+uuid(Buffer.allocUnsafe(uuid.BYTES)) // => allocUnsafe'ed 16 byte Buffer
 ```
 
 ## API
