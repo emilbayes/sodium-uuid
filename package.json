@@ -1,6 +1,6 @@
 {
   "name": "sodium-uuid",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Generate v4 UUIDs using libsodium's RNG",
   "main": "index.js",
   "dependencies": {
