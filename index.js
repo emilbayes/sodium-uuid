@@ -1,10 +1,11 @@
 'use strict'
 var sodium = require('sodium-native')
+var assert = require('assert')
 
-module.exports = function (buf) {
-  if (Buffer.isBuffer(buf) && buf.length < 16) {
-    throw new RangeError('buf must be at least 16 bytes')
-  }
+module.exports = create
+function create (buf) {
+  assert(buf == null ? true : Buffer.isBuffer(buf), 'buf must be Buffer')
+  assert(buf == null ? true : buf.length >= 16, 'buf must be at least 16 bytes')
 
   if (buf == null) {
     buf = Buffer.allocUnsafe(16)
