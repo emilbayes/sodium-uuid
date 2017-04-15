@@ -4,7 +4,7 @@
   "description": "Generate v4 UUIDs using libsodium's RNG",
   "main": "index.js",
   "dependencies": {
-    "sodium-native": "^1.6.0"
+    "sodium-universal": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {},
