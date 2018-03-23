@@ -43,6 +43,7 @@ create.isUUID = function (uuid) {
 create.stringify = function (buf) {
   assert(Buffer.isBuffer(buf), 'buf must be Buffer')
   assert(buf.byteLength >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
+  assert(create.isUUID(buf), 'Could not parse buf (' + buf + '): Invalid UUIDv4')
 
   return [
     buf.slice(0, 4),
@@ -53,6 +54,15 @@ create.stringify = function (buf) {
   ].map(function (subbuf) {
     return subbuf.toString('hex')
   }).join('-')
+}
+
+create.parse = function (str, buf) {
+  if (buf == null) buf = Buffer.allocUnsafe(BYTES)
+  buf.write(str.replace(/-/g, ''), 0, BYTES, 'hex')
+
+  assert(create.isUUID(buf), 'Could not parse str (' + str + '): Invalid UUIDv4')
+
+  return buf
 }
 
 create.BYTES = BYTES

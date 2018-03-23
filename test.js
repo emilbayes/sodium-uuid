@@ -41,3 +41,27 @@ test('degenerate cases', function (assert) {
 
   assert.end()
 })
+
+test('parse/stringify', function (assert) {
+  for (var i = 0; i < 1e5; i++) {
+    var id = uuid()
+    var str = uuid.stringify(id)
+    var cid = uuid.parse(str)
+
+    if (!id.equals(cid)) assert.fail('id != cid')
+  }
+
+  assert.end()
+})
+
+test('isUUID', function (assert) {
+  for (var i = 0; i < 1e5; i++) {
+    var id = uuid()
+    var str = uuid.stringify(id)
+
+    if (!uuid.isUUID(id)) assert.fail('id not uuid')
+    if (!uuid.isUUID(str)) assert.fail('str not uuid')
+  }
+
+  assert.end()
+})
