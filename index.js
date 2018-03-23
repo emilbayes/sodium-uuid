@@ -7,7 +7,7 @@ var BYTES = 16
 module.exports = create
 function create (buf) {
   assert(buf == null ? true : Buffer.isBuffer(buf), 'buf must be Buffer')
-  assert(buf == null ? true : buf.length >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
+  assert(buf == null ? true : buf.byteLength >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
 
   if (buf == null) {
     buf = Buffer.allocUnsafe(BYTES)
@@ -33,7 +33,7 @@ function create (buf) {
 
 create.stringify = function (buf) {
   assert(Buffer.isBuffer(buf), 'buf must be Buffer')
-  assert(buf.length >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
+  assert(buf.byteLength >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
 
   return [
     buf.slice(0, 4),
