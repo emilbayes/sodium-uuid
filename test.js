@@ -2,6 +2,13 @@ var test = require('tape')
 var uuid = require('.')
 var isUuid = require('is-uuid')
 
+test('constants', function (assert) {
+  assert.same(typeof uuid.BYTES, 'number')
+  assert.ok(uuid.BYTES > 0)
+
+  assert.end()
+})
+
 test('returns valid uuid', function (assert) {
   var uuid1 = uuid()
   var uuid2 = uuid(Buffer.alloc(16))
