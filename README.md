@@ -25,6 +25,9 @@ This method does not insert dashes in the formatting, but this can be done by th
 Convert `buf` to string representation of UUID eg. `4a181507-72e2-45c7-a512-9d9601425b2d`
 Will only read the first 16 bytes of `buf`.
 
+### `var bool = uuid.isUUID(obj)`
+Check that `obj` is a valid UUIDv4. `obj` can be either a string or `Buffer`
+
 ### `uuid.BYTES`
 Constant defining the number of bytes `buf` must be able to contain.
 

@@ -29,6 +29,17 @@ function create (buf) {
   return buf
 }
 
+var REGEX = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[ab89][a-f0-9]{3}-[a-f0-9]{12}$/i
+create.isUUID = function (uuid) {
+  if (typeof uuid === 'string') return uuid.length === 36 && REGEX.test(uuid)
+
+  assert(Buffer.isBuffer(uuid), 'uuid must be string or Buffer')
+
+  return uuid.byteLength >= BYTES &&
+    (uuid[6] & 0b11110000) === 0b01000000 &&
+    (uuid[8] & 0b11000000) === 0b10000000
+}
+
 create.stringify = function (buf) {
   assert(Buffer.isBuffer(buf), 'buf must be Buffer')
   assert(buf.byteLength >= BYTES, 'buf must be at least BYTES (' + BYTES + ') bytes')
