@@ -1,5 +1,5 @@
 'use strict'
-var sodium = require('sodium-universal')
+var sodium = require('sodium-native')
 var assert = require('assert')
 
 var BYTES = 16
